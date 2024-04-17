@@ -7,6 +7,9 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class Group(Model):
+    """A single group from a clustering process which contains a number
+    of clients."""
+    
     _name = "mltest.group"
     _description = "A group of clients."
 

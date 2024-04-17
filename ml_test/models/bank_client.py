@@ -7,10 +7,11 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class BankClient(Model):
+    """Representation of a client from a bank."""
     _name = "bank.client"
     _description = "Data from the clients of the bank."
 
-    customer_id = fields.Char()
+    customer_id = fields.Char() # It is the original id, not the Odoo one
     surname = fields.Char()
     geography = fields.Many2one("res.country")
     gender = fields.Selection([("female", "Female"),

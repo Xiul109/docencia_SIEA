@@ -11,6 +11,9 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class Clustering(Model):
+    """Contains the parameters for KMeans and DBSCAN algorithms and also contains the groups
+    that generated after applying the algorithms."""
+    
     _name = "mltest.clustering"
     _description = "A clustering wrapper."
 
@@ -40,11 +43,10 @@ class Clustering(Model):
                 g.unlink()
             
             self._perform_clustering_for_record(record, model)
-#            group = self.env["mltest.group"].create({"name":"g1", "clustering_id":record.id})
-#            record.write({"groups":[(4, group.id)]})
         return True
 
     def _perform_clustering_for_record(self, record, model):
+        # Extracting required data
         clients = np.array(list(map(lambda client: np.array([client.id,
                                                              client.balance,
                                                              client.estimated_salary,
@@ -54,12 +56,17 @@ class Clustering(Model):
                                     self.env["bank.client"].search([]))))
         ids = clients[:, 0]
         
+        # Scaling the values
         scaler = StandardScaler()
         data = scaler.fit_transform(clients[:, 1:])
 
+        # Fitting the model
         model.fit(data)
+
+        # Creating the groups containing the clients
         labels = model.labels_
         for label in np.unique(labels):
             members = [(4, id) for id in ids[np.where(labels==label)]]
-            record.write({"groups":[(0, 0, {"name": "g%d"%label, "clustering_id": record.id,
+            record.write({"groups":[(0, 0, {"name": "g%d"%label, 
+                                            "clustering_id": record.id,
                                             "members":members})]})
