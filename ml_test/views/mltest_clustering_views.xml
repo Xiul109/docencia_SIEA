@@ -1,0 +1,48 @@
+<odoo>
+    <record id="mltest_clustering_action" model="ir.actions.act_window">
+        <field name="name">Clusterings</field>
+        <field name="res_model">mltest.clustering</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="mltest_clustering_view_tree" model="ir.ui.view">
+        <field name="name">mltest.clustering.tree</field>
+        <field name="model">mltest.clustering</field>
+        <field name="arch" type="xml">
+            <tree string="Clustering">
+                <field name="name"/>
+                <field name="algorithm"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="mltest_clustering_view_form" model="ir.ui.view">
+        <field name="name">mltest.clustering.form</field>
+        <field name="model">mltest.clustering</field>
+        <field name="arch" type="xml">
+            <form string="Clustering">
+                <sheet>
+                    <h1><field name="name"/></h1>
+                    <group>
+                        <group>
+                            <field name="algorithm"/>
+                        </group>
+                        <group invisible="algorithm!='k-means'">
+                            <field name="k_param"/>
+                        </group>
+                        <group invisible="algorithm!='dbscan'">
+                            <field name="epsilon_param"/>
+                            <field name="min_samples_param"/>
+                        </group>
+                    </group>
+                    <separator></separator>
+                    <group>
+                        <button name="action_perform_clustering" type="object" string="Perform clustering"/>
+                    </group>
+                    <h2>Grouping</h2>   
+                    <field name="groups" readonly="True"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

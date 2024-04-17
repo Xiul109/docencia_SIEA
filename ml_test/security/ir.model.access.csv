@@ -1,0 +1,4 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+bank.access_client,bank.client,model_bank_client,base.group_user,1,1,1,1
+mltest.access_clustering,mltest.clustering,model_mltest_clustering,base.group_user,1,1,1,1
+mltest.access_group,mltest.group,model_mltest_group,base.group_user,1,1,1,1

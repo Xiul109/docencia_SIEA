@@ -1,0 +1,60 @@
+<odoo>
+    <record id="bank_client_action" model="ir.actions.act_window">
+        <field name="name">Clients</field>
+        <field name="res_model">bank.client</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="mltest_bank_client_view_tree" model="ir.ui.view">
+        <field name="name">bank.client.tree</field>
+        <field name="model">bank.client</field>
+        <field name="arch" type="xml">
+            <tree string="Clients">
+                <field name="customer_id"/>
+                <field name="surname"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <field name="balance"/>
+                <field name="credit_score"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="mltest_bank_client_view_form" model="ir.ui.view">
+        <field name="name">bank.client.form</field>
+        <field name="model">bank.client</field>
+        <field name="arch" type="xml">
+            <form string="Client">
+                <sheet>
+                    <h1>
+                        <field name="customer_id"/>
+                    </h1>
+                    <group>
+                        <field name="surname"/>
+                        <field name="gender"/>
+                        <field name="age"/>
+                        <field name="geography"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="balance"/>
+                            <field name="estimated_salary"/>
+                        </group>
+                        <group>
+                            <field name="credit_score"/>
+                            <field name="tenure"/>
+                        </group>
+                        <group>
+                            <field name="num_of_products"/>
+                            <field name="has_cr_card"/>
+                            <field name="is_active_member"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="exited"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

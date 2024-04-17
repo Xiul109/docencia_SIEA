@@ -1,0 +1,10 @@
+<odoo>
+    <menuitem id="bank_menu_root" name="Bank">
+        <menuitem id="bank_menu_clients" name="Clients">
+            <menuitem id="bank_main_menu" action="bank_client_action"/>
+        </menuitem>
+        <menuitem id="mltest_menu_main" name="Machine Learning">
+            <menuitem id="mltest_clustering_menu" action="mltest_clustering_action"/>
+        </menuitem>
+    </menuitem>
+</odoo>
