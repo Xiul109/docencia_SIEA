@@ -50,8 +50,12 @@
                             <field name="is_active_member"/>
                         </group>
                     </group>
+                    <separator/>
                     <group>
-                        <field name="exited"/>
+                        <button name="action_predict_exit" type="object" string="Predict Exit"/>
+                        <group>
+                            <field name="exited"/>
+                        </group>
                     </group>
                 </sheet>
             </form>

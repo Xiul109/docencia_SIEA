@@ -1,10 +1,19 @@
 from odoo.models import Model
-from odoo import fields, api, exceptions
-from dateutil.relativedelta import relativedelta
+from odoo import fields
 
+import numpy as np
+
+import joblib
+import os
 import logging
 
 _logger = logging.getLogger(__name__)
+
+clf_path = os.path.join(os.path.dirname(__file__) ,
+                        "../dt_training/client_exit_classifier.pkl")
+clf = joblib.load(clf_path)
+clf_fields = ["credit_score", "geography", "gender", "age", "tenure", "balance",
+              "num_of_products", "has_cr_card", "is_active_member", "estimated_salary"]
 
 class BankClient(Model):
     """Representation of a client from a bank."""
@@ -31,3 +40,11 @@ class BankClient(Model):
     is_active_member = fields.Boolean()
     
     exited = fields.Boolean()
+
+    def action_predict_exit(self):
+        for record in self:
+            data = [record[f] for f in clf_fields]
+            data[1] = data[1].code
+            data = np.array([data], dtype="object")
+            record.exited =clf.predict(data)
+        return True
