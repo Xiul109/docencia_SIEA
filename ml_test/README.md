@@ -3,6 +3,7 @@ Hay muchísimas formas en las que se pueden aplicar técnicas de aprendizaje aut
 * numpy
 * scikit-learn
 * pandas
+* joblib
 
 ## Preparación de los datos
 Será necesario descargar [este dataset](https://www.kaggle.com/datasets/shrutimechlearn/churn-modelling/data) sobre clientes de un banco pensado para intentar predecir si un cliente dejará o no el banco. Para poder cargar los datos correctamente en Odoo, independientemente del idioma en el que esté, es necesario cambiar el nombre de los paises campo geography por el código del pais de la siguiente manera:

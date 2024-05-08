@@ -34,7 +34,7 @@ class Clustering(Model):
             # Initializing the model
             model = None
             if record.algorithm == "k-means":
-                model = KMeans(record.k_param, algorithm="lloyd")
+                model = KMeans(record.k_param, algorithm="elkan")
                 # Lloyd algorithm do not work well in Odoo
             else:
                 model = DBSCAN(eps=record.epsilon_param, min_samples=record.min_samples_param)
