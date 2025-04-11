@@ -66,7 +66,7 @@ class Clustering(Model):
         # Creating the groups containing the clients
         labels = model.labels_
         for label in np.unique(labels):
-            members = [(4, id) for id in ids[np.where(labels==label)]]
+            members = [(4, int(id)) for id in ids[np.where(labels==label)]]
             record.write({"groups":[(0, 0, {"name": "g%d"%label, 
                                             "clustering_id": record.id,
                                             "members":members})]})

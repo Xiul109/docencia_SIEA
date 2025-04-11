@@ -2,17 +2,17 @@
     <record id="mltest_clustering_action" model="ir.actions.act_window">
         <field name="name">Clusterings</field>
         <field name="res_model">mltest.clustering</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
 
-    <record id="mltest_clustering_view_tree" model="ir.ui.view">
-        <field name="name">mltest.clustering.tree</field>
+    <record id="mltest_clustering_view_list" model="ir.ui.view">
+        <field name="name">mltest.clustering.list</field>
         <field name="model">mltest.clustering</field>
         <field name="arch" type="xml">
-            <tree string="Clustering">
+            <list string="Clustering">
                 <field name="name"/>
                 <field name="algorithm"/>
-            </tree>
+            </list>
         </field>
     </record>
 

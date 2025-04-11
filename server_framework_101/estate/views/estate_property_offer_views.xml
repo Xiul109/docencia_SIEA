@@ -2,15 +2,15 @@
     <record id="estate_property_offer_action" model="ir.actions.act_window">
         <field name="name">Offer</field>
         <field name="res_model">estate.property.offer</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="domain">[('property_type_id', '=', active_id)]</field>
     </record>
 
-    <record id="estate_property_offer_view_tree" model="ir.ui.view">
-        <field name="name">estate.property.offer.tree</field>
+    <record id="estate_property_offer_view_list" model="ir.ui.view">
+        <field name="name">estate.property.offer.list</field>
         <field name="model">estate.property.offer</field>
         <field name="arch" type="xml">
-            <tree string="Type" editable="top"  decoration-danger="status=='refused'"
+            <list string="Type" editable="top"  decoration-danger="status=='refused'"
                                                 decoration-success="status=='accepted'">
                 <field name="price"/>
                 <field name="partner_id"/>
@@ -19,7 +19,7 @@
                 <button name="action_accept" type="object" string="" icon="fa-check" invisible="status"/>
                 <button name="action_refuse" type="object" string="" icon="fa-times" invisible="status"/>
                 <field name="status" column_invisible="True"/>
-            </tree>
+            </list>
         </field>
     </record>
 
