@@ -1,7 +1,9 @@
-from odoo.models import Model
-from odoo import fields
+from odoo import fields, models
 
-class User(Model):
+class User(models.Model):
     _inherit = "res.users"
 
-    property_ids = fields.One2many("estate.property", "salesman_id")
+    property_ids = fields.One2many("estate.property", "salesperson_id",
+                                   domain=['|',
+                                           ('state', '=', 'new'),
+                                           ('state', '=', 'offer_received'),])

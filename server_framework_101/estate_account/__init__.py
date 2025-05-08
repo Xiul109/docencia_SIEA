@@ -1,1 +1,1 @@
-from .models import property
+from . import models

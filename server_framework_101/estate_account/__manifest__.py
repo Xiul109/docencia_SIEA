@@ -1,9 +1,15 @@
 {
-    "name": "EstateAccount ",  # The name that will appear in the App list
-    "application": True,  # This line says the module is an App, and not a module
-    "depends": ["estate", "account"],  # dependencies
-    "data": [
+    "name": "Real Estate - Account",
+    "category": "Real Estate",
+    "summary": "A module for connecting real estate management with Odoo account addon.",
+    "license": "LGPL-3",
+    "depends": [
+        "estate",
+        "account",
     ],
+    "data": [
+        # "security/ir.model.access.csv",
+    ],
+    "application": True,
     "installable": True,
-    'license': 'LGPL-3',
 }

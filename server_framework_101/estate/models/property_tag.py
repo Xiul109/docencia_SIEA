@@ -1,17 +1,13 @@
-from odoo.models import Model
-from odoo import fields
-from dateutil.relativedelta import relativedelta
+from odoo import models, fields
 
-class PropertyTag(Model):
+class PropertyTag(models.Model):
     _name = "estate.property.tag"
-    _description = "A tag for properties."
+    _description = "Used for adding the possibility of adding tags to properties."
     _order = "name"
 
-    name = fields.Char(required = True)
+    name = fields.Char(required = True, string="Title")
     color = fields.Integer()
 
-    # Constrains
     _sql_constraints = [
-        ("unique_name", "UNIQUE (name)", "Tag name must be unique.")
+        ('unique_name', 'UNIQUE(name)', 'Name must be unique.')
     ]
-    
